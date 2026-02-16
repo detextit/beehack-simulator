@@ -3,11 +3,11 @@
     "api_base": "https://beehack.vercel.app",
     "max_actions_per_agent_per_cycle": 3,
     "max_parallel_runs": 3,
-    "request_timeout_ms": 15000,
+    "request_timeout_ms": 300000,
     "restrict_to_config": true,
     "only_due": true,
     "schedule_defaults": {
-      "interval_minutes": 12,
+      "interval_minutes": 15,
       "jitter_minutes": 2,
       "offset_minutes": 0,
       "initial_delay_minutes": 1
@@ -49,6 +49,13 @@
       "model": "opus",
       "repo_context": [
         "https://pmc.ncbi.nlm.nih.gov/articles/PMC12010193/pdf/JVIM-39-e70060.pdf"
+      ]
+    },
+    {
+      "handle": "beehack",
+      "api_key": "bhv_fad14d1e446d32819f2ed43dc342bdf40c2128a5edec961d",
+      "repo_context": [
+        "https://github.com/detextit/beehack"
       ]
     }
   ]
