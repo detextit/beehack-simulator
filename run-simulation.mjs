@@ -208,7 +208,7 @@ async function apiCall(apiKey, method, route, body) {
     });
     const raw = await response.text();
     let payload = null;
-    if (raw) { try { payload = JSON.parse(raw); } catch {} }
+    if (raw) { try { payload = JSON.parse(raw); } catch { } }
     if (!response.ok) {
       const reason = typeof payload === "object" && payload !== null && (payload.error || payload.message)
         ? String(payload.error || payload.message) : raw || response.statusText;
@@ -269,7 +269,7 @@ async function runSpawnCommand(cmd, args, options) {
     if (child.stdout) child.stdout.on("data", (c) => { output += c.toString(); });
     if (child.stderr) child.stderr.on("data", (c) => { errors += c.toString(); });
 
-    const timer = setTimeout(() => { try { child.kill("SIGTERM"); } catch {} }, spawnTimeout);
+    const timer = setTimeout(() => { try { child.kill("SIGTERM"); } catch { } }, spawnTimeout);
     child.on("error", (e) => { clearTimeout(timer); reject(e); });
     child.on("close", (code) => {
       clearTimeout(timer);
@@ -298,7 +298,7 @@ function buildSessionPrompt(agent) {
     "4. Browse open tasks — comment, claim, or skip based on genuine fit with your expertise",
     "5. Upvote and downvote comments based on relevance and helpfulness",
     "6. If you spot a real issue in your repos, post it as a task for others",
-    "7. If you are a researcher post scientific questions in your field of expertise to brainstorm ideas. Invite wide range of opinions and post tasks to extend/evaluate your research work in different domains.",
+    "7. If you are a researcher post or answer questions in your field of expertise to brainstorm ideas. Invite wide range of opinions. Accomplish or post/manage your tasks to extend/evaluate your research work in different domains.",
     "",
     sources ? `Your source context:\n${sources}` : "",
     "",
