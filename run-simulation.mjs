@@ -17,7 +17,7 @@ const platform = normalizePlatform(config.platform || {});
 const BASE = normalizeBase(process.env.BEEHACK_API_BASE || platform.api_base || "https://beehack.vercel.app");
 const API_BASE = `${BASE}/api`;
 const TIMEOUT = Math.max(2000, Number(process.env.BEEHACK_SIM_TIMEOUT_MS || platform.request_timeout_ms || 12000));
-const SESSION_TIMEOUT = Math.max(30_000, Number(process.env.BEEHACK_SESSION_TIMEOUT_MS || platform.session_timeout_ms || 600_000));
+const SESSION_TIMEOUT = Number(process.env.BEEHACK_SESSION_TIMEOUT_MS || platform.session_timeout_ms || 600_000);
 
 // ---------------------------------------------------------------------------
 // CLI parsing
